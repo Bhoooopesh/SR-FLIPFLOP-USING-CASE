@@ -36,13 +36,58 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 /* write all the steps invloved */
 
+Type the program in Quartus software.
+
+Compile and run the program.
+
+Generate the RTL schematic and save the logic diagram.
+
+Create nodes for inputs and outputs to generate the timing diagram.
+
+For different input combinations generate the timing diagram.
+
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+```
+module sr_ff(s,r,clk,q,qbar);
+
+input s,r,clk;
+
+output reg q;
+
+output reg qbar;
+
+initial 
+
+begin
+
+q=0;
+
+qbar=1;
+
+end
+
+always @(posedge clk)
+
+begin
+
+   q=s|(~r&q);
+   
+   qbar=r|(~s&~q);
+end
+
+endmodule
+```
+Developed by: P Bhoopesh
+RegisterNumber:24001306
 */
 
 **RTL LOGIC FOR FLIPFLOPS**
+![Screenshot 2024-12-13 153812](https://github.com/user-attachments/assets/85faf361-3cd3-4093-8b14-e1a058e2c0ff)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![Screenshot 2024-12-13 153830](https://github.com/user-attachments/assets/bc251207-a2f4-4878-8bac-5192d2912911)
 
 **RESULTS**
+sucessfully implemented SR flipflop using verilog and validating their functionality using their functional tables.

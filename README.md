@@ -89,3 +89,4 @@ RegisterNumber: 24001306
 
 
 **RESULTS**
+Successfully implemented  SR flipflop using verilog and validating their functionality using their functional tables

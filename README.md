@@ -46,46 +46,41 @@ For different input combinations generate the timing diagram.
 
 **PROGRAM**
 
-module sr_ff(s,r,clk,q,qbar);
+```
+module sr_ff (s, r, clk, rst, q);
+  input s, r, clk, rst;
+  output reg q;
 
-input s,r,clk;
-
-output reg q;
-
-output reg qbar;
-
-initial 
-
-begin
-
-q=0;
-
-qbar=1;
-
-end
-
-always @(posedge clk)
-
-begin
-
-   q=s|(~r&q);
-   
-   qbar=r|(~s&~q);
-end
-
+  always @(posedge clk or posedge rst)
+ begin
+    if (rst)
+      q <= 0; // Reset the flip-flop
+    else
+ begin
+      case ({s, r}) // S and R control the behavior
+        2'b00: q <= q;    // No change
+        2'b01: q <= 0;    // Reset
+        2'b10: q <= 1;    // Set
+        2'b11: q <= 0;    // Invalid state, typically treated as reset
+      endcase
+    end
+  end
 endmodule
+```
 
-
+```
 Developed by: P Bhoopesh
 RegisterNumber: 24001306
+```
 
 
 **RTL LOGIC FOR FLIPFLOPS**
-![WhatsApp Image 2024-12-13 at 15 38 57_e1b3eda4](https://github.com/user-attachments/assets/e7726a18-9aed-488c-98ca-ed9254abe255)
 
+![WhatsApp Image 2024-12-29 at 17 27 14_45da9613](https://github.com/user-attachments/assets/8a5ff125-055c-49a5-b109-9f7cc04d6b25)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
-![WhatsApp Image 2024-12-13 at 15 38 57_88bb415e](https://github.com/user-attachments/assets/61acc1f7-af05-4238-bf10-84fb6a7fdcb6)
+![WhatsApp Image 2024-12-29 at 17 27 14_331f10e8](https://github.com/user-attachments/assets/19ae136f-f423-40a1-934c-501d2f4e5f22)
+
 
 
 **RESULTS**
